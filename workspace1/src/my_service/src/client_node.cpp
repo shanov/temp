@@ -9,7 +9,7 @@ main (int argc, char **argv)
 {
 	init(argc, argv, "add_string_publisher");
 	NodeHandle n;
-	ServiceClient client = n.serviceClient<my_service::AddString>("add_two_strings");
+	ServiceClient client = n.serviceClient<my_service::AddString>(this_node::getName());
 	my_service::AddString srv;
 	while (ok())
 	{

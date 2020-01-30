@@ -1,5 +1,6 @@
 #include "ros/ros.h"
 #include "my_service/AddString.h"
+#include <string>
 
 using namespace ros;
 
@@ -12,9 +13,10 @@ bool add(my_service::AddString::Request &req, my_service::AddString::Response &r
 }
 
 int main(int argc, char **argv) {
-	init(argc, argv, "add_two_strings_server");
+	init(argc, argv, "add_two_strings_server1");
 	NodeHandle n;
-	ServiceServer service = n.advertiseService("add_two_strings", add);
+	//std::string name = this_node::getName();
+	ServiceServer service = n.advertiseService(this_node::getName(), add);
 	//ROS_INFO("Ready to add two ints.");
 	spin();
 	return 0;
